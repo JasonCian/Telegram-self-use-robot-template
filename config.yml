@@ -1,0 +1,14 @@
+# 机器人token
+BOT_TOKEN: 
+# 机器人名字
+BOT_NAME: 
+# 机器人是否开启代理
+proxy: false
+# 机器人开启代理的url
+proxy_url: 
+# 数据库文件位置
+db_path: "mongodb://localhost:27017"
+# 数据库名称
+db_name: "telegrambot"
+# 管理员id
+admins: 
