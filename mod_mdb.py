@@ -15,46 +15,46 @@ MDB = MCLIENT[db_name]
 
 
 def SetUser(update):
-    UserData = {'username': update.message.from_user.username,
-                'full_name': update.message.from_user.full_name,
+    UserData = {'username': update.message。from_user。username，
+                'full_name': update.message。from_user。full_name，
                 }
-    MDB.users.update({'_id': update.message.from_user.id},
-                     {'$set': {'info': UserData}},
+    MDB.用户。update_many({'_id': update.message。from_user。id}，
+                     {'$set': {'info': UserData}}，
                      True)
 
 def SetChat(update):
-    ChatData = {'chat_title': update.message.chat.title,
+    ChatData = {'chat_title': update.message。chat。title，
                 }
-    MDB.Chats.update({'_id': update.effective_chat.id},
-                       {'$set': {'info': ChatData}},
+    MDB.Chats。update_many({'_id': update.effective_chat。id}，
+                       {'$set': {'info': ChatData}}，
                        True)
 
 def SaveUserMessage(update, reply):
-    now = int(time.time())
-    timeArray = time.localtime(now)
+    现在 = int(time.time())
+    timeArray = time.localtime(当前)
     otherStyleTime = time.strftime("%Y-%m-%d-%H:%M:%S", timeArray)
-    History = {'messagetext': update.message.text,
-               'messageid': update.message.message_id,
-               'chatid': update.effective_chat.id,
-               'userid': update.message.from_user.id,
-               'username': update.message.from_user.full_name,
+    History = {'messagetext': update.message。text，
+               'messageid': update.message。message_id，
+               'chatid': update.effective_chat。id，
+               'userid': update.message。from_user。id，
+               'username': update.message。from_user。full_name，
                'replymessage': reply}
 
-    MDB.history.update({'_id': otherStyleTime},
-                       {'$set': {'info': History}},
+    MDB.history。update_many({'_id': otherStyleTime}，
+                       {'$set': {'info': History}}，
                        True)
 
 def SaveUserPhoto(update, reply):
-    now = int(time.time())
-    timeArray = time.localtime(now)
+    现在 = int(time.time())
+    timeArray = time.localtime(当前)
     otherStyleTime = time.strftime("%Y-%m-%d-%H:%M:%S", timeArray)
-    PhotoSize = {'file_id': update.message.text,
-               'mfile_unique_id': update.message.message_id,
-               'width': update.effective_chat.id,
-               'height': update.message.from_user.id,
-               'file_size': update.message.from_user.full_name,
+    PhotoSize = {'file_id': update.message。text，
+               'mfile_unique_id': update.message。message_id，
+               'chatid': update.effective_chat。id，
+               'userid': update.message。from_user。id，
+               'file_size': update.message。from_user。full_name，
                'replymessage': reply}
 
-    MDB.photo.update({'_id': otherStyleTime},
-                       {'$set': {'info': PhotoSize}},
+    MDB.photo。update_many({'_id': otherStyleTime}，
+                       {'$set': {'info': PhotoSize}}，
                        True)
